@@ -45,7 +45,7 @@
             this.btnlogin.TabIndex = 0;
             this.btnlogin.Text = "login";
             this.btnlogin.UseVisualStyleBackColor = false;
-            this.btnlogin.Click += new System.EventHandler(this.btnorder_Click);
+            this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
             // 
             // lblsenha
             // 
@@ -93,7 +93,6 @@
             this.Controls.Add(this.btnlogin);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

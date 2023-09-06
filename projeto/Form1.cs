@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WebMotors;
 
 namespace projeto
 {
@@ -17,29 +19,39 @@ namespace projeto
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+
+
+
+        
+
+        private void btnlogin_Click(object sender, EventArgs e)
         {
+            Connection connection = new Connection();
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Connection = connection.ReturnConnection();
+            sqlCommand.CommandText = @"INSERT INTO banco_milckshacksper VALUES
+            (@email, @senha)";
 
-        }
 
-        private void btnorder_Click(object sender, EventArgs e)
-        {
-            string senha= txbsenha.Text;
-            string email= txbemail.Text;
 
-            string message = "senha: " +senha+
-                "\nemail: "+ email;
-            MessageBox.Show(
-                 message,
-                "ATENÇÃO",
+            sqlCommand.Parameters.AddWithValue("@email", txbemail.Text);
+            sqlCommand.Parameters.AddWithValue("@senha", txbsenha.Text);
+
+
+
+
+
+
+            sqlCommand.ExecuteNonQuery();
+            //campo depois de logar
+            MessageBox.Show("cadastrado com sucesso",
+                "AVISO",
                 MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-                );
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+                MessageBoxIcon.Information);
+            //para limpar
+            txbemail.Clear();
+            txbsenha.Clear();
         }
     }
+
 }
