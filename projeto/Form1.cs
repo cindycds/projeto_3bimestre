@@ -20,13 +20,13 @@ namespace projeto
         }
         private void UpdateListView()
         {
-            LtvStudent.Items.Clear();
+            listView1.Items.Clear();
 
             Connection conn = new Connection();
             SqlCommand sqlCom = new SqlCommand();
 
             sqlCom.Connection = conn.ReturnConnection();
-            sqlCom.CommandText = "SELECT * FROM Student";
+            sqlCom.CommandText = "SELECT * FROM sorveteria_milkshackper";
 
             try
             {
@@ -35,20 +35,14 @@ namespace projeto
                 //Enquanto for possível continuar a leitura das linhas que foram retornadas na consulta, execute.
                 while (dr.Read())
                 {
-                    int id = (int)dr["Id"];
-                    string name = (string)dr["Name"];
-                    string job = (string)dr["Enrollment"];
-                    string tel = (string)dr["Telephone"];
-                    string cpf = (string)dr["Cpf"];
-                    string pass = (string)dr["Password"];
+                   
+                    string email = (string)dr["email"];
+                    string senha= (string)dr["senha"];
 
-                    ListViewItem lv = new ListViewItem(id.ToString());
-                    lv.SubItems.Add(name);
-                    lv.SubItems.Add(job);
-                    lv.SubItems.Add(tel);
-                    lv.SubItems.Add(cpf);
-                    lv.SubItems.Add(pass);
-                    LtvStudent.Items.Add(lv);
+
+                    ListViewItem lv = new ListViewItem(email);
+                    lv.SubItems.Add(senha);
+                    listView1.Items.Add(lv);
 
                 }
                 dr.Close();
@@ -99,6 +93,11 @@ namespace projeto
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
