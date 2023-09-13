@@ -26,7 +26,7 @@ namespace projeto
             SqlCommand sqlCom = new SqlCommand();
 
             sqlCom.Connection = conn.ReturnConnection();
-            sqlCom.CommandText = "SELECT * FROM sorveteria_milkshackper";
+            sqlCom.CommandText = "SELECT * FROM login";
 
             try
             {
@@ -68,7 +68,7 @@ namespace projeto
             Connection connection = new Connection();
             SqlCommand sqlCommand = new SqlCommand();
             sqlCommand.Connection = connection.ReturnConnection();
-            sqlCommand.CommandText = @"INSERT INTO banco_milckshacksper VALUES
+            sqlCommand.CommandText = @"INSERT INTO login VALUES
             (@email, @senha)";
 
 
@@ -90,11 +90,13 @@ namespace projeto
             //para limpar
             txbemail.Clear();
             txbsenha.Clear();
+
+            UpdateListView();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            UpdateListView();
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
