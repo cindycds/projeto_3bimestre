@@ -14,6 +14,7 @@ namespace projeto
 {
     public partial class Form1 : Form
     {
+        private string id;
         public Form1()
         {
             InitializeComponent();
@@ -103,6 +104,51 @@ namespace projeto
         {
 
         }
+
+        private void editar_Click(object sender, EventArgs e)
+        {
+            Connection connection = new Connection();
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Connection = connection.ReturnConnection();
+            sqlCommand.CommandText = @"UPDATE  login SET
+            email=@email,
+            senha=@senha,
+            WHERE id= @id";
+            
+
+
+
+            sqlCommand.Parameters.AddWithValue("@email", txbemail.Text);
+            sqlCommand.Parameters.AddWithValue("@senha", txbsenha.Text);
+            sqlCommand.Parameters.AddWithValue("@id", txbsenha.Text);
+
+
+
+
+
+
+            sqlCommand.ExecuteNonQuery();
+            //campo depois de logar
+            MessageBox.Show("cadastrado com sucesso",
+                "AVISO",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+            //para limpar
+            txbemail.Clear();
+            txbsenha.Clear();
+
+            UpdateListView();
+        }
+
+        private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int index;
+            index = Ltvlogin.FocusedItem.Index;
+            Id = int.Parse(Ltvlogin.Items[index].SubItems[0].Text);
+            txbemail.Text = Ltvlogin.Items[index].SubItems[1].Text;
+            txbsenha.Text = Ltvlogin.Items[index].SubItems[2].Text;
+           
+        }
+    }
     }
 
-}
