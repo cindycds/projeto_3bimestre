@@ -14,7 +14,7 @@ namespace projeto
 {
     public partial class Form1 : Form
     {
-        private string id;
+        private int Id;
         public Form1()
         {
             InitializeComponent();
@@ -41,7 +41,8 @@ namespace projeto
                     string senha= (string)dr["senha"];
 
 
-                    ListViewItem lv = new ListViewItem(email);
+                    ListViewItem lv = new ListViewItem(dr["id"].ToString());
+                    lv.SubItems.Add(email);
                     lv.SubItems.Add(senha);
                     listView1.Items.Add(lv);
 
@@ -112,7 +113,7 @@ namespace projeto
             sqlCommand.Connection = connection.ReturnConnection();
             sqlCommand.CommandText = @"UPDATE  login SET
             email=@email,
-            senha=@senha,
+            senha=@senha
             WHERE id= @id";
             
 
@@ -120,7 +121,7 @@ namespace projeto
 
             sqlCommand.Parameters.AddWithValue("@email", txbemail.Text);
             sqlCommand.Parameters.AddWithValue("@senha", txbsenha.Text);
-            sqlCommand.Parameters.AddWithValue("@id", txbsenha.Text);
+            sqlCommand.Parameters.AddWithValue("@id", Id);
 
 
 
@@ -143,10 +144,10 @@ namespace projeto
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             int index;
-            index = Ltvlogin.FocusedItem.Index;
-            Id = int.Parse(Ltvlogin.Items[index].SubItems[0].Text);
-            txbemail.Text = Ltvlogin.Items[index].SubItems[1].Text;
-            txbsenha.Text = Ltvlogin.Items[index].SubItems[2].Text;
+            index = listView1.FocusedItem.Index;
+            Id = int.Parse(listView1.Items[index].SubItems[0].Text);
+            txbemail.Text = listView1.Items[index].SubItems[1].Text;
+            txbsenha.Text = listView1.Items[index].SubItems[2].Text;
            
         }
     }
