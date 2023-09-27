@@ -153,6 +153,31 @@ namespace projeto
             txbsenha.Text = listView1.Items[index].SubItems[2].Text;
            
         }
+
+
+        // excluir
+        private void excluir_Click(object sender, EventArgs e)
+        {
+            Connection connection = new Connection();
+            SqlCommand sqlCommand = new SqlCommand();
+
+            sqlCommand.Connection = connection.ReturnConnection();
+            sqlCommand.CommandText = @"DELETE FROM login WHERE Id = @id";
+            sqlCommand.Parameters.AddWithValue("@id", Id);
+            try
+            {
+               sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception err)
+            {
+                throw new Exception("Erro: Problemas ao excluir usuário no banco.\n" + err.Message);
+            }
+            finally
+            {
+                connection.CloseConnection();
+            }
+            UpdateListView();
+        }
     }
     }
 

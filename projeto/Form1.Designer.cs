@@ -38,6 +38,7 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.editar = new System.Windows.Forms.Button();
+            this.excluir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnlogin
@@ -125,6 +126,18 @@
             this.editar.UseVisualStyleBackColor = false;
             this.editar.Click += new System.EventHandler(this.editar_Click);
             // 
+            // excluir
+            // 
+            this.excluir.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.excluir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.excluir.Location = new System.Drawing.Point(387, 392);
+            this.excluir.Name = "excluir";
+            this.excluir.Size = new System.Drawing.Size(66, 40);
+            this.excluir.TabIndex = 8;
+            this.excluir.Text = "excluir";
+            this.excluir.UseVisualStyleBackColor = false;
+            this.excluir.Click += new System.EventHandler(this.excluir_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -132,6 +145,7 @@
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.BackgroundImage = global::projeto.Properties.Resources._14448996_5463002;
             this.ClientSize = new System.Drawing.Size(830, 654);
+            this.Controls.Add(this.excluir);
             this.Controls.Add(this.editar);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.lblemail);
@@ -159,6 +173,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.Button editar;
+        private System.Windows.Forms.Button excluir;
     }
 }
 
