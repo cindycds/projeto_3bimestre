@@ -66,7 +66,8 @@ namespace projeto
 
 
         private void btnlogin_Click(object sender, EventArgs e)
-        {
+        { 
+            //ADICIONAR AS INFORMAÇOES para logar
             Connection connection = new Connection();
             SqlCommand sqlCommand = new SqlCommand();
             sqlCommand.Connection = connection.ReturnConnection();
@@ -89,7 +90,7 @@ namespace projeto
                 "AVISO",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
-            //para limpar
+            //para limpar depois de execultar
             txbemail.Clear();
             txbsenha.Clear();
 
@@ -108,17 +109,19 @@ namespace projeto
 
         private void editar_Click(object sender, EventArgs e)
         {
+            //EDITAR AS INFORMAÇOES
             Connection connection = new Connection();
             SqlCommand sqlCommand = new SqlCommand();
             sqlCommand.Connection = connection.ReturnConnection();
             sqlCommand.CommandText = @"UPDATE  login SET
+                
             email=@email,
-            senha=@senha
+            senha=@senha       
             WHERE id= @id";
             
 
 
-
+            //os @ recebem as informaçoes dos campos de texto que estao na tela
             sqlCommand.Parameters.AddWithValue("@email", txbemail.Text);
             sqlCommand.Parameters.AddWithValue("@senha", txbsenha.Text);
             sqlCommand.Parameters.AddWithValue("@id", Id);
@@ -129,12 +132,12 @@ namespace projeto
 
 
             sqlCommand.ExecuteNonQuery();
-            //campo depois de logar
-            MessageBox.Show("cadastrado com sucesso",
+            //campo depois de editar
+            MessageBox.Show("Editado com sucesso",
                 "AVISO",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
-            //para limpar
+            //para limpar depois de executado
             txbemail.Clear();
             txbsenha.Clear();
 

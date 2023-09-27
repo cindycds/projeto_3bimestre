@@ -34,9 +34,9 @@
             this.txbsenha = new System.Windows.Forms.TextBox();
             this.lblemail = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.editar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -44,7 +44,7 @@
             // 
             this.btnlogin.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnlogin.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnlogin.Location = new System.Drawing.Point(112, 337);
+            this.btnlogin.Location = new System.Drawing.Point(387, 291);
             this.btnlogin.Name = "btnlogin";
             this.btnlogin.Size = new System.Drawing.Size(66, 40);
             this.btnlogin.TabIndex = 0;
@@ -55,7 +55,7 @@
             // lblsenha
             // 
             this.lblsenha.AutoSize = true;
-            this.lblsenha.Location = new System.Drawing.Point(50, 295);
+            this.lblsenha.Location = new System.Drawing.Point(404, 229);
             this.lblsenha.Name = "lblsenha";
             this.lblsenha.Size = new System.Drawing.Size(36, 13);
             this.lblsenha.TabIndex = 2;
@@ -63,14 +63,14 @@
             // 
             // txbemail
             // 
-            this.txbemail.Location = new System.Drawing.Point(45, 232);
+            this.txbemail.Location = new System.Drawing.Point(325, 166);
             this.txbemail.Name = "txbemail";
             this.txbemail.Size = new System.Drawing.Size(203, 20);
             this.txbemail.TabIndex = 3;
             // 
             // txbsenha
             // 
-            this.txbsenha.Location = new System.Drawing.Point(45, 311);
+            this.txbsenha.Location = new System.Drawing.Point(325, 254);
             this.txbsenha.Name = "txbsenha";
             this.txbsenha.Size = new System.Drawing.Size(203, 20);
             this.txbsenha.TabIndex = 4;
@@ -78,7 +78,7 @@
             // lblemail
             // 
             this.lblemail.AutoSize = true;
-            this.lblemail.Location = new System.Drawing.Point(55, 216);
+            this.lblemail.Location = new System.Drawing.Point(404, 141);
             this.lblemail.Name = "lblemail";
             this.lblemail.Size = new System.Drawing.Size(31, 13);
             this.lblemail.TabIndex = 5;
@@ -90,6 +90,7 @@
             this.columnHeader3,
             this.columnHeader1,
             this.columnHeader2});
+            this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(12, 479);
             this.listView1.Name = "listView1";
@@ -100,6 +101,10 @@
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             this.listView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDoubleClick);
             // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Id";
+            // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "email";
@@ -108,15 +113,11 @@
             // 
             this.columnHeader2.Text = "senha";
             // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Id";
-            // 
             // editar
             // 
             this.editar.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.editar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.editar.Location = new System.Drawing.Point(112, 383);
+            this.editar.Location = new System.Drawing.Point(387, 337);
             this.editar.Name = "editar";
             this.editar.Size = new System.Drawing.Size(66, 40);
             this.editar.TabIndex = 7;
