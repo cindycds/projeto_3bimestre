@@ -1,4 +1,5 @@
-﻿using System;
+﻿using projeto.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -158,24 +159,13 @@ namespace projeto
         // excluir
         private void excluir_Click(object sender, EventArgs e)
         {
-            Connection connection = new Connection();
-            SqlCommand sqlCommand = new SqlCommand();
-
-            sqlCommand.Connection = connection.ReturnConnection();
-            sqlCommand.CommandText = @"DELETE FROM login WHERE Id = @id";
-            sqlCommand.Parameters.AddWithValue("@id", Id);
-            try
-            {
-               sqlCommand.ExecuteNonQuery();
-            }
-            catch (Exception err)
-            {
-                throw new Exception("Erro: Problemas ao excluir usuário no banco.\n" + err.Message);
-            }
-            finally
-            {
-                connection.CloseConnection();
-            }
+            //Chamando o metodo de exclusao
+            LoginusuarioDAO dadosdouser = new LoginusuarioDAO();
+            dadosdouser.Deleteuser(Id);
+            //limpando campos
+            txbemail.Clear();
+            txbsenha.Clear();
+            //atualizada a listView
             UpdateListView();
         }
     }
