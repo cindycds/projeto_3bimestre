@@ -18,12 +18,12 @@ namespace projeto.Properties
             _email = email;
             _senha = senha;
         }
-        public string email;
+        public string email
         {
             //para atualizar valor
             set { _email = value; }
             //para retornar valor
-            get {return = _email }
+            get {return  _email; }
         }
        
        
