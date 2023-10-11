@@ -23,6 +23,8 @@ namespace projeto
         private void UpdateListView()
         {
             listView1.Items.Clear();
+            LoginusuarioDAO loginusuarioDAO = new LoginusuarioDAO();
+            List<LoginUsuario> users = loginusuarioDAO.SelectUser();
 
             Connection conn = new Connection();
             SqlCommand sqlCom = new SqlCommand();
@@ -32,23 +34,17 @@ namespace projeto
 
             try
             {
-                SqlDataReader dr = sqlCom.ExecuteReader();
+                foreach (LoginusuarioDAO loginusuarioDAO1 in users)
 
-                //Enquanto for possível continuar a leitura das linhas que foram retornadas na consulta, execute.
-                while (dr.Read())
                 {
-                   
-                    string email = (string)dr["email"];
-                    string senha= (string)dr["senha"];
 
 
                     ListViewItem lv = new ListViewItem(dr["id"].ToString());
-                    lv.SubItems.Add(email);
-                    lv.SubItems.Add(senha);
+                    lv.SubItems.Add(loginusuarioDAO._email);
+                    lv.SubItems.Add(loginusuarioDAO._senha);
                     listView1.Items.Add(lv);
 
                 }
-                dr.Close();
             }
             catch (Exception err)
             {

@@ -17,6 +17,14 @@ namespace projeto.Properties
         {//validaçao dos campos
             Email = email;
             Senha = senha;
+        }public LoginUsuario(
+                     int id,
+                     string email,
+                     string senha)
+        {//validaçao dos campos
+            _id = id;
+            Email = email;
+            Senha = senha;
         }
         public string Email
         {

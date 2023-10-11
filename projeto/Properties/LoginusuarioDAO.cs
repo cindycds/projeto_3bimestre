@@ -4,12 +4,57 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using WebMotors;
 
 namespace projeto.Properties
 {
     internal class LoginusuarioDAO
     {
+        public List<LoginUsuario> SelectUser()
+        {
+            Connection conn = new Connection();
+            SqlCommand sqlCom = new SqlCommand();
+
+            sqlCom.Connection = conn.ReturnConnection();
+            sqlCom.CommandText = "SELECT * FROM login";
+            List<LoginUsuario > users= new List<LoginUsuario>();
+            try
+            {
+                SqlDataReader dr = sqlCom.ExecuteReader();
+
+                //Enquanto for possível continuar a leitura das linhas que foram retornadas na consulta, execute.
+                while (dr.Read())
+                {
+                    LoginUsuario objeto = new LoginUsuario(
+                        (int)dr["id"],
+                     (string)dr["email"],
+                     (string)dr["senha"] 
+                    );
+
+
+                   users.Add(objeto);
+
+
+                }
+                dr.Close();
+                return users; //retornar a lista
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+            finally
+            {
+                conn.CloseConnection();
+            }
+            return null;
+        }
+
+
+
+
+
         public void InterUser(LoginUsuario loginUsuario)
         {
             //ADICIONAR AS INFORMAÇOES para logar
