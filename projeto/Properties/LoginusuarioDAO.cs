@@ -10,6 +10,29 @@ namespace projeto.Properties
 {
     internal class LoginusuarioDAO
     {
+        public void InterUser(LoginUsuario loginUsuario)
+        {
+            //ADICIONAR AS INFORMAÇOES para logar
+            Connection connection = new Connection();
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Connection = connection.ReturnConnection();
+            sqlCommand.CommandText = @"INSERT INTO login VALUES
+            (@email, @senha)";
+
+
+
+            sqlCommand.Parameters.AddWithValue("@email", loginUsuario.Email);
+            sqlCommand.Parameters.AddWithValue("@senha", loginUsuario.Senha);
+
+
+
+
+
+
+            sqlCommand.ExecuteNonQuery();
+        }
+
+
         // void nao me retorna nada, apenas executa
         public void Deleteuser(int Id)
         {

@@ -14,16 +14,31 @@ namespace projeto.Properties
 
         public LoginUsuario(string email,
                      string senha)
-        {
-            _email = email;
-            _senha = senha;
+        {//validaçao dos campos
+            Email = email;
+            Senha = senha;
         }
-        public string email
+        public string Email
         {
-            //para atualizar valor
-            set { _email = value; }
+            //para atualizar(inserir) valor
+            set {
+                if(string.IsNullOrEmpty(value))
+                    throw new Exception("campo e-mail está vazio");
+                _email = value; 
+            }
             //para retornar valor
             get {return  _email; }
+        } public string Senha
+        {
+            //para atualizar(inserir) valor
+            set {
+                if (string.IsNullOrEmpty(value))
+                    throw new Exception("campo senha está vazio");   //para ver se o campo esta vazio
+                _senha = value;
+            
+            }
+            //para retornar valor
+            get {return  _senha; }
         }
        
        

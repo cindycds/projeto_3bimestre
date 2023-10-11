@@ -67,30 +67,31 @@ namespace projeto
 
 
         private void btnlogin_Click(object sender, EventArgs e)
-        { 
-            //ADICIONAR AS INFORMAÇOES para logar
-            Connection connection = new Connection();
-            SqlCommand sqlCommand = new SqlCommand();
-            sqlCommand.Connection = connection.ReturnConnection();
-            sqlCommand.CommandText = @"INSERT INTO login VALUES
-            (@email, @senha)";
+        {
+            try
+            { 
+            //criar obj da classe usuario
+            LoginUsuario loginUsuario = new LoginUsuario(
+                txbemail.Text,
+                txbsenha.Text
 
+                );
+                //chamando o metodo de exclusao
+                LoginusuarioDAO nomeDoObj = new LoginusuarioDAO();
+                nomeDoObj.InterUser(loginUsuario);
 
+                //campo depois de logar
+                MessageBox.Show("cadastrado com sucesso",
+                    "AVISO",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch(Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
 
-            sqlCommand.Parameters.AddWithValue("@email", txbemail.Text);
-            sqlCommand.Parameters.AddWithValue("@senha", txbsenha.Text);
-
-
-
-
-
-
-            sqlCommand.ExecuteNonQuery();
-            //campo depois de logar
-            MessageBox.Show("cadastrado com sucesso",
-                "AVISO",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            
             //para limpar depois de execultar
             txbemail.Clear();
             txbsenha.Clear();
