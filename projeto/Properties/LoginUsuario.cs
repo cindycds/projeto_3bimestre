@@ -34,7 +34,7 @@ namespace projeto.Properties
                 Id = value;
             }
             //para retornar valor
-            get { return Id }
+            get { return Id; }
         }
         public string Email
         {

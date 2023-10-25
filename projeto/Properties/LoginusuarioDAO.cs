@@ -99,7 +99,7 @@ namespace projeto.Properties
             {
                 connection.CloseConnection();
             }
-        } k
+        } 
     }
 }
 
