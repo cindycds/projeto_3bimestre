@@ -22,9 +22,19 @@ namespace projeto.Properties
                      string email,
                      string senha)
         {//validaçao dos campos
-            _id = id;
+            Id = id;
             Email = email;
             Senha = senha;
+        }
+        public int Id
+        {
+            //para atualizar(inserir) valor
+            set
+            {
+                Id = value;
+            }
+            //para retornar valor
+            get { return Id }
         }
         public string Email
         {
@@ -36,7 +46,8 @@ namespace projeto.Properties
             }
             //para retornar valor
             get {return  _email; }
-        } public string Senha
+        }
+        public string Senha
         {
             //para atualizar(inserir) valor
             set {

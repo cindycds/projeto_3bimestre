@@ -26,22 +26,17 @@ namespace projeto
             LoginusuarioDAO loginusuarioDAO = new LoginusuarioDAO();
             List<LoginUsuario> users = loginusuarioDAO.SelectUser();
 
-            Connection conn = new Connection();
-            SqlCommand sqlCom = new SqlCommand();
-
-            sqlCom.Connection = conn.ReturnConnection();
-            sqlCom.CommandText = "SELECT * FROM login";
 
             try
             {
-                foreach (LoginusuarioDAO loginusuarioDAO1 in users)
+                foreach (LoginUsuario login in users)
 
                 {
 
 
-                    ListViewItem lv = new ListViewItem(dr["id"].ToString());
-                    lv.SubItems.Add(loginusuarioDAO._email);
-                    lv.SubItems.Add(loginusuarioDAO._senha);
+                    ListViewItem lv = new ListViewItem(login.Id.ToString()) ;
+                    lv.SubItems.Add(login.Email);
+                    lv.SubItems.Add(login.Senha);
                     listView1.Items.Add(lv);
 
                 }
@@ -52,7 +47,7 @@ namespace projeto
             }
             finally
             {
-                conn.CloseConnection();
+                Connection.CloseConnection();
             }
         }
 

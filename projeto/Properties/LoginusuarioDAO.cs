@@ -18,7 +18,7 @@ namespace projeto.Properties
 
             sqlCom.Connection = conn.ReturnConnection();
             sqlCom.CommandText = "SELECT * FROM login";
-            List<LoginUsuario > users= new List<LoginUsuario>();
+            List<LoginUsuario> users = new List<LoginUsuario>();
             try
             {
                 SqlDataReader dr = sqlCom.ExecuteReader();
@@ -29,11 +29,11 @@ namespace projeto.Properties
                     LoginUsuario objeto = new LoginUsuario(
                         (int)dr["id"],
                      (string)dr["email"],
-                     (string)dr["senha"] 
+                     (string)dr["senha"]
                     );
 
 
-                   users.Add(objeto);
+                    users.Add(objeto);
 
 
                 }
@@ -99,6 +99,7 @@ namespace projeto.Properties
             {
                 connection.CloseConnection();
             }
-        }
+        } k
     }
 }
+
