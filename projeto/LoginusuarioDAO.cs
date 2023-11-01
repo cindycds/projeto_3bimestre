@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WebMotors;
 
-namespace projeto.Properties
+
+namespace projeto
 {
     internal class LoginusuarioDAO
     {
         public List<LoginUsuario> SelectUser()
         {
-            Connection conn = new Connection();
+           Connection conn = new Connection();
             SqlCommand sqlCom = new SqlCommand();
 
             sqlCom.Connection = conn.ReturnConnection();

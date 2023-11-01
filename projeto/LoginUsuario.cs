@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace projeto.Properties
+namespace projeto
 {
     public class LoginUsuario
     {
@@ -31,10 +31,10 @@ namespace projeto.Properties
             //para atualizar(inserir) valor
             set
             {
-                Id = value;
+                _id = value;
             }
             //para retornar valor
-            get { return Id; }
+            get { return _id; }
         }
         public string Email
         {

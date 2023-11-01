@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WebMotors;
+
 
 namespace projeto
 {
@@ -29,7 +29,8 @@ namespace projeto
 
             try
             {
-                foreach (LoginUsuario login in users)
+                if (users != null)
+                    foreach (LoginUsuario login in users)
 
                 {
 
@@ -45,10 +46,10 @@ namespace projeto
             {
                 MessageBox.Show(err.Message);
             }
-            finally
-            {
-                Connection.CloseConnection();
-            }
+            
+            txbsenha.Clear();
+            txbemail.Clear();
+            UpdateListView();
         }
 
 

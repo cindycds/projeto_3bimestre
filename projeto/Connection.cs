@@ -1,11 +1,12 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System;
 
-namespace WebMotors
+namespace projeto
 {
     internal class Connection
     {
@@ -17,19 +18,25 @@ namespace WebMotors
         public Connection() //LAB01-PC17\SQLEXPRESS
         {
             //Data Source=LAB01-PC17\SQLEXPRESS;Initial Catalog=RevendaDeCarros_Will;Integrated Security=True
-            string stringConnection = @"Data Source="
-                    + Environment.MachineName +
-                    @"\SQLEXPRESS;Initial Catalog=" +
-                    DataBase + ";Integrated Security=true";
+            string stringConnection = "Data Source=LAB01-PC25\\SQLEXPRESS;Initial Catalog=sorveteria_milkshackper;Integrated Security=True";
+            // @"Data Source="
+            // + Environment.MachineName +
+            // @"\SQLEXPRESS;Initial Catalog=" +
+            // DataBase + ";Integrated Security=true";
 
             con = new SqlConnection(stringConnection);
-            con.Open();   //Abrir a conexão com o banco de dados
+            {
+                con.Open();
+            }
+           
         }
         //Tenta fechar a conexão com o banco
         public void CloseConnection()
         {
-            if (con.State == ConnectionState.Open)
+            if (con != null && con.State == ConnectionState.Open)
+            {
                 con.Close();
+            }
         }
         //Retorna a conexão que foi aberta
         public SqlConnection ReturnConnection()
